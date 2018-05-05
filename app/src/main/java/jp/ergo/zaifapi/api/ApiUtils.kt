@@ -3,6 +3,7 @@ package jp.ergo.zaifapi.api
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import jp.ergo.zaifapi.BuildConfig
+import jp.ergo.zaifapi.api.entity.Depth
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,12 +22,21 @@ object ApiUtils {
         httpClient.connectTimeout(60, TimeUnit.SECONDS)
 
 
+        val typeAdapters = mapOf(
+                Depth.Element.adapter
+        )
+
         val retrofit = Retrofit.Builder().baseUrl(baseUrl ?: this.baseUrl)
                 .addConverterFactory(GsonConverterFactory
                         .create(GsonBuilder()
                                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                                .create()))
+                                .let {
+                                    typeAdapters.forEach { e ->
+                                        it.registerTypeAdapter(e.key, e.value)
+                                    }
+                                    it
+                                }.create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(httpClient.build())
                 .build()

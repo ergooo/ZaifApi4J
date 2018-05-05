@@ -1,6 +1,6 @@
 package jp.ergo.zaifapi.api.entity
 
 
-data class CurrenciesResult(
+data class Currency(
         val name: String,
         val isToken: Boolean)

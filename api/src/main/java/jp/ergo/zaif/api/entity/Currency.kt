@@ -1,4 +1,4 @@
-package jp.ergo.zaifapi.api.entity
+package jp.ergo.zaif.api.entity
 
 
 data class Currency(

@@ -1,4 +1,4 @@
-package jp.ergo.zaifapi.api.entity
+package jp.ergo.zaif.api.entity
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

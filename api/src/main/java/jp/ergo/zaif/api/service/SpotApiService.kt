@@ -1,9 +1,9 @@
-package jp.ergo.zaifapi.api.service
+package jp.ergo.zaif.api.service
 
 import io.reactivex.Single
-import jp.ergo.zaifapi.api.ApiUtils
-import jp.ergo.zaifapi.api.caller.SpotApiCaller
-import jp.ergo.zaifapi.api.entity.*
+import jp.ergo.zaif.api.entity.*
+import jp.ergo.zaif.api.ApiUtils
+import jp.ergo.zaif.api.caller.SpotApiCaller
 
 
 interface SpotApiService {

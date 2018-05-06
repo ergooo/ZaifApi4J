@@ -1,9 +1,8 @@
-package jp.ergo.zaifapi.api
+package jp.ergo.zaif.api
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
-import jp.ergo.zaifapi.BuildConfig
-import jp.ergo.zaifapi.api.entity.Depth
+import jp.ergo.zaif.api.entity.Depth
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +15,7 @@ object ApiUtils {
     private val baseUrl = "https://api.zaif.jp"
     fun <T> createApiCaller(clazz: Class<T>, baseUrl: String? = null): T {
         val httpClient = OkHttpClient.Builder()
-        if(BuildConfig.DEBUG) httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         httpClient.followRedirects(true)
         httpClient.readTimeout(60, TimeUnit.SECONDS)
         httpClient.connectTimeout(60, TimeUnit.SECONDS)

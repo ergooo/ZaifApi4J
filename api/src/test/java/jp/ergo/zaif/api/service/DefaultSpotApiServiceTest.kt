@@ -1,8 +1,8 @@
-package jp.ergo.zaifapi.api.service
+package jp.ergo.zaif.api.service
 
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import jp.ergo.zaifapi.api.entity.*
+import jp.ergo.zaif.api.entity.*
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.apache.commons.io.IOUtils
@@ -10,8 +10,11 @@ import org.junit.After
 import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 import org.hamcrest.core.Is.`is` as be
 
+@RunWith(JUnit4::class)
 class DefaultSpotApiServiceTest {
     private var server: MockWebServer? = null
 
@@ -103,7 +106,7 @@ class DefaultSpotApiServiceTest {
     @Test
     fun getTrades() {
         val testData = IOUtils.toString(
-                this::class.java.classLoader.getResourceAsStream("trades.json"),
+                this::class.java.getResourceAsStream("/trades.json"),
                 "UTF-8"
         )
 

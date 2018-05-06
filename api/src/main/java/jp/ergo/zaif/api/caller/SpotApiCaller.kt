@@ -1,7 +1,7 @@
-package jp.ergo.zaifapi.api.caller
+package jp.ergo.zaif.api.caller
 
 import io.reactivex.Single
-import jp.ergo.zaifapi.api.entity.*
+import jp.ergo.zaif.api.entity.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 
